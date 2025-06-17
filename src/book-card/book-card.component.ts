@@ -2,7 +2,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IBook } from '../models/book.model';
 import { MatCardModule } from '@angular/material/card';
-import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
+import {MatDialog} from "@angular/material/dialog";
 import {BookService} from "../services/book.service";
 import {AddBookDialogComponent} from "../add-book/add-book-dialog.component";
 import {Router} from "@angular/router";
@@ -42,9 +42,7 @@ export class BookCardComponent {
   }
 
   updateBook(book: IBook) {
-    let dialogConfig = new MatDialogConfig();
-    dialogConfig.data = book;
-    const dialogRef = this.dialog.open(AddBookDialogComponent, dialogConfig);
+    const dialogRef = this.dialog.open(AddBookDialogComponent, { data: book, });
 
     dialogRef.afterClosed().subscribe((data) => {
       this.updateData(data);

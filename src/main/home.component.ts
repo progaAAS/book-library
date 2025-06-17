@@ -23,8 +23,8 @@ export class HomeComponent implements OnInit {
 
   filteredBooks = computed(() =>
     this.books().filter((book) =>
-      book.title?.toLowerCase().includes(this.query().toLowerCase()) ||
-      book.author?.toLowerCase().includes(this.query().toLowerCase())
+      book?.title?.toLowerCase().includes(this.query().toLowerCase()) ||
+      book?.author?.toLowerCase().includes(this.query().toLowerCase())
     )
   );
 
@@ -44,6 +44,7 @@ export class HomeComponent implements OnInit {
     const dialogRef = this.dialog.open(AddBookDialogComponent);
 
     dialogRef.afterClosed().subscribe((newBook: IBook) => {
+      if (!newBook) return;
       this.bookService.addBook(newBook).subscribe((data) => {
         this.books.update((prev) => [...prev, newBook]);
       });
