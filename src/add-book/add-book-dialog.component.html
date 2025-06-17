@@ -1,0 +1,24 @@
+<div class="modal">
+  <h2 class="title" mat-dialog-title>{{isAddNewBook ? 'Добавить книгу' : 'Обновить'}}</h2>
+  <form class="example-full-width" [formGroup]="myForm" (ngSubmit)="submit()">
+    <mat-form-field class="example-form" appearance="fill">
+      <mat-label>Название</mat-label>
+      <input matInput formControlName="title" />
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Автор</mat-label>
+      <input matInput formControlName="author" />
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Описание</mat-label>
+      <textarea matInput formControlName="description"></textarea>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>URL обложки</mat-label>
+      <input matInput formControlName="urlImg" />
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="myForm.invalid">{{isAddNewBook ? 'Добавить' : 'Обновить'}}</button>
+  </form>
+
+</div>

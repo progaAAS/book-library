@@ -1,0 +1,18 @@
+<mat-grid-list cols="3" gutterSize="16px" rowHeight="1:1.4">
+
+  <mat-card-actions>
+    <input
+      #searchInput
+      matInput
+      placeholder="Поиск по названию или автору"
+      (keyup)="onSearch(searchInput.value)"
+    />
+    <button mat-button color="primary" (click)="openAddDialog()">Добавить книгу</button>
+  </mat-card-actions>
+
+  <div class="container">
+    <mat-card *ngFor="let book of filteredBooks()">
+      <app-book-card [book]="book" (update)="updateBook($event)" (delete)="deleteBook($event)"/>
+    </mat-card>
+  </div>
+</mat-grid-list>
